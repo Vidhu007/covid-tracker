@@ -31,6 +31,9 @@ const casesTypeColors = {
       multiplier: 2000,
     },
   };
+  /*  har casetype ke liye we want to show circle of diff size on the map
+  so multiplayer rakhliya for that and randomly values dedi sabko according to
+  kise sabse bada and kise sabse chota dikhana hai circle se */
 
   /*Leaflet keeps changing its documentaiona and does not tell
   pehle hex, rgb sab aise pass karte the but now "pathOptions" ka ek prop pass karna hai 
@@ -67,6 +70,9 @@ export const showDataOnMap = (data, casesType='cases')=>
      
      data.map(country=> (
          <Circle
+
+         /*  see the docs of circle*/
+
          center={[country.countryInfo.lat,country.countryInfo.long] }
          fillOpacity={0.4}
          pathOptions={casesTypeColors[casesType].option}
@@ -77,8 +83,12 @@ export const showDataOnMap = (data, casesType='cases')=>
           }
          >
              <Popup>
+             {/*  Popup ek component hai react-leaflet ka jo jab graph pe touch kare toh kuch  pop karde*/}
                  <div className="info-container">
                      <div className="info-flag" style={{backgroundImage: `url(${country.countryInfo.flag})`}} />
+
+                     {/*  yaha flag pehle display nahi horaha tha because material ui 
+                     uski height ko zero kar raha tha so humne css mein height dedi flag ko*/}
                      <div className="info-name"> {country.country}</div>
                      <div className="info-confirmed">Cases: {numeral(country.cases).format("0,0")}</div>
                      <div className="info-recovered">Recovered: {numeral(country.recovered).format("0,0")}</div>

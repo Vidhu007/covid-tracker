@@ -61,10 +61,12 @@ function App() {
         
         setCountries(countries)
         // data mein saara data hai so we 'll send this to the table
-        // now we need the countries in increasing order of the covid cases
+        // now we need the countries in decreasing order of the covid cases
         // so we'll implement a sorted function and then pass the data through it to the table
         let sortedData = sortData(data);
         setTableData(sortedData);
+
+        /*  map ko bhi saari countries ka data chahiye*/
         setMapCountries(data);
       })
     } 
@@ -90,12 +92,15 @@ function App() {
       await fetch(url)
       .then((response)=>response.json())
       .then((data)=>{
+         // response json mein aayega about each country ,,,let that be "data"
         setCountry(countryCode);
         setCountryInfo(data);
         
+        // response json mein aayega about each country ,,,let that be "data"
         countryCode === "worldwide" 
         ? setMapCenter([34.80746, -40.4796])
         : setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        // worldwide select karne se error aara tha so humne alag se likh diya to remove the error
         countryCode === "worldwide"
         ? setMapZoom(3)
         : setMapZoom(4);
@@ -107,20 +112,24 @@ function App() {
   // console.log(countryInfo);
   return (
     <div className="app">
-
+  
+  {/* 2 div banalo ek app__left and ek app__right*/}
    <div className="app__left">
      
       {/* Header*/}
       <div className="app__header">
      <h1>Covid Tracker </h1>
      {/* Title + droppdown*/}
+
+     {/* material ui se dropdown*/}
      <FormControl className="app__dropdown">
        <Select variant="outlined" value={country} onChange={onCountryChange}>
        <MenuItem value="worldwide">Worldwide</MenuItem>
          {/* Loop through all countries and show dropdown*/}
          {countries.map((country)=> (
            <MenuItem value={country.value} >{country.name}</MenuItem>
-           // value is country code 
+           // har country ko display karna hai in dropdown
+           // value is country code and display country name hoga
          ))}
       
        </Select>
@@ -128,10 +137,15 @@ function App() {
      </div>
 
 <div className="app__stats">
+
+  {/* Components ko className , onClick ye sab dena is thoda different see the code*/}
      <InfoBox 
      active={casesType==="cases"} 
      title="Covid cases" 
      isRed
+
+     /* prettyPrintStat bade bade numbers ko standard form mein pretty way se display kardega 
+    Eg 524000 ko 5.24 K */ 
      cases={prettyPrintStat(countryInfo.todayCases)}
       total={prettyPrintStat(countryInfo.cases)}
        onClick={e=> setCasesType("cases")}  />

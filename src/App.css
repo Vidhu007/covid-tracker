@@ -34,6 +34,7 @@ body {
    justify-content: space-between;
    
 }
+/* Table ke h3 mein top margin dena tha thoda sa to make it look clean*/
 .app__information > h3:last-of-type {
    margin-top: 1rem;
  }
@@ -43,6 +44,8 @@ body {
    font-size: 1.5rem;
    margin-bottom: 1rem;
  }
+
+ {/* kuch hua nahi ye css apply karke*/}
  .app__right {
    display: flex;
    flex-direction: column;
