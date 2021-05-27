@@ -1,0 +1,36 @@
+.infoBox {
+  flex: 1;
+  cursor: pointer;
+  /* cursor pointer se whenever mouse hover karoge card pe the cursor will change the shape to a hand*/
+}
+/* saare cards were in flex in row direction
+flex=1 se all the cards will take as much space as they want ...see the output with  and without this css*/
+
+.infoBox:not(:last-child) {
+    margin-right: 10px;
+  }
+  /* Ab saare cards ek doosre se chipak gaye so we want to gave them all margin except the last card
+  rightmost vaala because if usse disturb kara toh table aur graph mein dikkat aajygi*/
+
+  .infoBox--selected {
+    border-top: 10px solid greenyellow;
+  }
+  .infoBox--red {
+    border-color: red;
+  }
+  .infoBox__cases--green {
+    color: lightgreen !important;
+  }
+  .infoBox__cases {
+    color: #cc1034;
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .infoBox__total {
+    color: #6c757d;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    margin-top: 15px !important;
+  }

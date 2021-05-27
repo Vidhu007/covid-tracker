@@ -1,0 +1,62 @@
+* {
+   margin: 0;
+}
+body {
+   background-color: #f5f6fa;
+}
+.app {
+   display: flex;
+  /* By default flex direction is row joki we wwant */
+   /* try justify content : space evenly on online tools isse evenly space ho jaynge elements*/
+   justify-content: space-evenly;
+   padding: 20px;
+}
+.app__dropdown {
+   background-color: white;
+ }
+
+.app__left {
+   /*we want our left part to occupy 90% of the space*/
+   flex: 0.9;
+}
+.app__header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 20px;
+}
+.app__header > h1 {
+   color: #fc3c3c;
+   font-size: 2rem;
+ }
+.app__stats {
+   display: flex;
+   justify-content: space-between;
+   
+}
+.app__information > h3:last-of-type {
+   margin-top: 1rem;
+ }
+ .app__information > h3 {
+   color: #6a5d5d;
+   font-weight: 400;
+   font-size: 1.5rem;
+   margin-bottom: 1rem;
+ }
+ .app__right {
+   display: flex;
+   flex-direction: column;
+   
+   
+}
+
+
+/* Normally we want left and right parts in row i.e info box aur map left mein & table and graphy on right*/
+/* But if user minimizes window bahut choti kardi toh to prevent left and right to squash and kharaab karde display*/
+/* we'll set the flex-direction to column so that jab window choti kare koi to min toh upper info box and map & neeche table and grapg*/
+/* left 2 right ki jagah we want top 2 bottom jab user window choti kare*/
+@media (max-width: 990px) {
+   .app {
+      flex-direction: column;
+   }
+}

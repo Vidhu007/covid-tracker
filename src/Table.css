@@ -1,0 +1,26 @@
+.table {
+    margin-top: 20px;
+
+    overflow: scroll;
+    height: 400px;
+    /*matlab fix height kardi humne of our table and jab saara data fit na ho
+    jo surely nahi hoga as we limited the height, then use feature "scroll
+    so users can scroll through data...ye nahi karenge toh saara data poori table mein aayega wiht too many rows*/
+
+    color: #6a5d5d;
+}
+
+.table tr {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table td {
+    padding: 0.5rem;
+}
+
+/*We want every record "tr" of table jiska type "odd" ho to be gray
+ i.e har odd no ki row should be of gray background */
+.table tr:nth-of-type(odd) {
+    background-color: #f3f2f8;
+}
